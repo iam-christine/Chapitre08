@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class BookShelf {
@@ -26,5 +27,9 @@ public class BookShelf {
 
     public Map<Year, List<Book>> groupByPublicationYear() {
         return  books.stream().collect(Collectors.groupingBy(book -> Year.of(book.getPublishedOn().getYear())));
+    }
+
+    public <K> Map<K, List<Book>> groupBy(Function<Book, K> fx) {
+        return books.stream().collect(Collectors.groupingBy(fx));
     }
 }
