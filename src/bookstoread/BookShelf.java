@@ -17,4 +17,8 @@ public class BookShelf {
         return books.stream().sorted().collect(Collectors.toList());
     }
 
+    public List<Book> arrange(Comparator<Book> criteria) {
+        return books.stream().sorted(criteria).collect(Collectors.toList());
+    }
+
 }
